@@ -73,25 +73,40 @@ class TeacherController extends Controller
   public function store(Request $request)
   {
     //
-   
+
+    $starDate = strip_tags($request->holidayStart);
+    $endDate = strip_tags($request->holidayEnd);
+    if (!empty($starDate) || !empty($endDate)) {
+      if ($starDate <  date("yy-m-d")) {
+        $request->session()->flash('msg', 'Data de inicio das férias não pode ser menor que a data atual.');
+        $request->session()->flash('status', 'notification'); // success error notification
+        return redirect()->back();
+      }
+
+      if ($starDate >= $endDate) {
+        $request->session()->flash('msg', 'Data de inicio das férias não pode ser menor ou igual da data de final das férias.');
+        $request->session()->flash('status', 'notification'); // success error notification
+        return redirect()->back();
+      }
+    }
+
     $data = [
       'name' => strip_tags($request->name),
       'status' => 'titular',
-      'holidayStart' => strip_tags($request->holidayStart),
-      'holidayEnd' => strip_tags($request->holidayEnd)
+      'holidayStart' => $starDate,
+      'holidayEnd' => $endDate
     ];
-    
+
     Validator::make($data, [
       'name' => 'required|string|max:255',
       'holidayStart' => 'nullable|date',
       'holidayEnd' => 'nullable|date',
     ])->validate();
-    
+
     Teacher::insert($data);
     $request->session()->flash('msg', 'Inserido com sucesso');
     $request->session()->flash('status', 'success'); // success error notification
     return redirect()->back();
-
   }
 
   /**

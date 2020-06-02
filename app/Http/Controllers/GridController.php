@@ -89,7 +89,7 @@ class GridController extends Controller
         if ($week->week !== "sabado") {
             $disciplineResult =  Grid::GetId('disciplines', 'id', $discipline_iddiscipline);
             if ($disciplineResult->classWeek >= 4) {
-                $request->session()->flash('msg', 'Desculpa, mas esta disciplina, já vai ser dada mais de três vezes na semana');
+                $request->session()->flash('msg', 'Desculpa, mas esta disciplina, já vai ser dada mais de quatro vezes na semana');
                 $request->session()->flash('status', 'error');
                 return redirect()->back();
             }
