@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Teachers extends Migration
+class CreateTeacherTable extends Migration
 {
   /**
    * Run the migrations.
@@ -19,7 +19,6 @@ class Teachers extends Migration
       $table->string('status')->enum('titular','substituto');
       $table->string('holidayStart')->nullable();
       $table->string('holidayEnd')->nullable();
-      $table->timestamps();
     });
   }
 
