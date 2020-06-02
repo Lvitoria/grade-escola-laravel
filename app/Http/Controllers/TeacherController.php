@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Teacher;
+use App\repositories\Teacher;
 use Validator;
 
 class TeacherController extends Controller

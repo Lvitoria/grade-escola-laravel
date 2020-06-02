@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Grid;
-use App\Discipline;
+use App\repositories\Grid;
+use App\repositories\Discipline;
 use Validator;
 
 class GridController extends Controller

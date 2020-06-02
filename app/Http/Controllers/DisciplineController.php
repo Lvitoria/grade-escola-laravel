@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Teacher;
-use App\Discipline;
+use App\repositories\Teacher;
+use App\repositories\Discipline;
 use Validator;
 
 class DisciplineController extends Controller

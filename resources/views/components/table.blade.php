@@ -8,7 +8,6 @@
   </thead>
   <tbody>
     @foreach ($list as $key => $value)
-
       <tr>
         @foreach ($columnList as $key2 => $value2)
           @if ($key2 == 'id')
